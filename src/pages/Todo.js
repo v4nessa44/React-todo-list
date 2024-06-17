@@ -5,25 +5,37 @@ import Item from '../components/Item/Item';
 
 const Todo = () => {
 
-const[tasks, setTasks] = useState([]);
+let data = JSON.parse(localStorage.getItem("tasks")) || [];
+
+const[tasks, setTasks] = useState(data);
 const[inputTxt, setInputTxt] = useState("");
 
 const handleClearAll = ()=> {
   setTasks([]);
+  localStorage.setItem("task",JSON.stringify([]));
 };
 
 const handleAddTask = (e) =>{
   e.preventDefault();
-  const newList = [...tasks,inputTxt];
+
+  let task = {
+    id:new Date(),
+    title: inputTxt,
+  };
+
+  const newList = [...tasks,task];
 
   setTasks(newList);
   setInputTxt("")
+
+  localStorage.setItem("task",JSON.stringify(newList));
 };
 
-const handleDelete = (name)=>{
-  const filterTasks = tasks.filter((task)=> task !==name)
+const handleDelete = (id)=>{
+  const filterTasks = tasks.filter((task)=> task.id !==id);
 
   setTasks(filterTasks);
+  localStorage.setItem("task",JSON.stringify(filterTasks));
 }
 
   return (

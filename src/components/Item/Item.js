@@ -10,11 +10,11 @@ const item = ({tasks, deleteTask}) => {
         <ul>
             {tasks.map((task)=>
              <li>
-             <span>{task}</span>
+             <span>{task.title}</span>
              <i 
              class="fa-solid fa-trash" 
              onClick={() =>{
-              deleteTask(task)
+              deleteTask(task.id)
              }}
              style={{color: "#1E9A6E"}}
              ></i>
