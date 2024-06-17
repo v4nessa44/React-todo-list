@@ -5,7 +5,7 @@ import Item from '../components/Item/Item';
 
 const Todo = () => {
 
-let data = JSON.parse(localStorage.getItem("tasks")) || [];
+let data = JSON.parse(localStorage.getItem("task")) || [];
 
 const[tasks, setTasks] = useState(data);
 const[inputTxt, setInputTxt] = useState("");
